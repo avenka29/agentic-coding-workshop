@@ -38,3 +38,9 @@ All 74 upstream files were initially verified byte-for-byte against commit `7246
 The offline installer successfully copied all five skills to `/home/avenka29/dev/agentic-skills/.agents/skills`; a second install confirmed identical files without overwriting them. User-wide skill directories are outside the permitted writable roots, so global discovery still requires the user's installation command in docs/skills-guide.md. Authenticated live PR polling/agent scheduling and tracker publication were not tested: gh is unavailable in this environment and no target PR was requested. No live monitor was created. These offline checks do not validate LLM behavior, actual UI availability, or every upstream maintenance test.
 
 Whitespace verification passed for locally authored changes. The full staged whitespace check flags existing trailing whitespace in upstream `scripts/design_system.py`; it is intentionally retained to preserve the pinned source hashes.
+
+## Local run convenience scripts
+
+Added `scripts/setup.sh` (dependency installation plus app tests/build) and `scripts/dev.sh` (both foreground services with shutdown cleanup and port checks). Bash syntax checks passed. Setup and start were attempted: prerequisite checks correctly reported missing Node/npm and supported Python/dependencies. The unused Python 3.14 virtualenv from the failed original setup contained only pip and was moved outside the checkout to a temporary backup, preserving it while leaving setup free to create a compatible environment.
+
+The app is still not running in this session. Node/npm are absent, only Python 3.14 is installed, and registry host resolution still fails. Actual service startup/shutdown, port checks, frontend/backend suites, and end-to-end HTTP/UI checks remain unverified here. Run the README quick setup from a terminal with Node.js 22 LTS, Python 3.11–3.13, and registry access.

@@ -2,6 +2,20 @@
 
 A small task manager for practicing two coding agents in separate Git worktrees. The 30-minute workshop has a 10-minute presentation and a 20-minute exercise. Listing, completion toggles, deletion, and SQLite persistence are implemented. **Task creation is intentionally not implemented.**
 
+## Quick local setup
+
+With Node.js 22 LTS/npm and Python 3.11–3.13 installed, run:
+
+```bash
+cd agentic-coding-workshop
+bash scripts/setup.sh
+bash scripts/dev.sh
+```
+
+Setup installs dependencies and runs backend tests, frontend tests, and the build. Start opens both local services in one terminal; visit http://127.0.0.1:5173 once startup finishes. Ctrl-C stops both services. Dependencies need package-registry access during setup; running the installed app uses no external services. Re-run setup after changing dependencies. If multiple Python versions are installed, select one with `PYTHON_BIN=python3.13 bash scripts/setup.sh`.
+
+An incompatible existing `backend/.venv` is preserved and reported rather than replaced. Move it outside the repository before rerunning setup. Keep each worktree's dependencies separate and stop any previous service using ports 5173/8000 before launching another checkout. Manual commands remain below.
+
 ## Install before the workshop
 Requires Git, Node.js 22 LTS/npm, and Python 3.11–3.13 with pip/venv. Internet access is needed only to install dependencies. No Docker, paid APIs, database server, or API keys. Use Bash commands below (Windows users can use WSL).
 
