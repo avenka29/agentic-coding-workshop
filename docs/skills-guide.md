@@ -60,7 +60,7 @@ The setup session installed the dev bundle at `/home/avenka29/dev/agentic-skills
 
 The security and architecture reviewers inspect the proposed PR diff before publication. Their independent gates must pass, or the approver must explicitly accept a documented waiver/limitation. A host without subagents needs human review or an explicit waiver; the skill cannot silently replace independence with self-review. Publication uses the approved target and normal pushes, never automatic merging. This repository retains its no-push-without-approval instruction.
 
-For the 20-minute workshop, use the existing two small tickets and worktree guide. These richer workflows are optional extensions; interviewing, remote ticket setup, and extended review may need time outside the timed exercise. Do not implement task creation just by installing skills.
+For the 20-minute workshop, use the existing two small tickets and worktree guide. The exercise uses grill-me, create-ticket, and implement-ticket explicitly; interviewing, remote ticket setup, and extended review may need time outside the timed exercise. UI UX Pro Max and PR babysitting are optional follow-up practice. Do not implement task creation just by installing skills.
 
 ## PR monitor
 

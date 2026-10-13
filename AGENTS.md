@@ -8,7 +8,15 @@ This is a minimal starter for a 30-minute agentic coding workshop: 10 minutes of
 When asked to set up/run the app or resolve missing dependencies, follow `docs/setup-guide.md` before the exercise. Inspect OS/shell, repository state, runtime versions, environment access, and existing dependencies. Choose Linux/WSL `scripts/setup.sh`, macOS `scripts/macos.sh setup`, or native Windows `scripts/windows.ps1 -Action Setup`; use the matching start command. Host-tool installation is a separate explicit action, using existing authorization and actual tool permissions. Preserve existing environments/data and provide concrete user commands for blocked steps. Verify tests/build, live app/API behavior, and absence of task creation before claiming starter readiness. Report what passed versus what is blocked. These setup requests do not invoke implement-ticket milestone gates or authorize implementing the exercise.
 
 ## Commands (from repository root)
-Convenience commands: `bash scripts/setup.sh` installs dependencies and runs checks; `bash scripts/dev.sh` runs both services and stops them together on Ctrl-C.
+These setup commands install and verify **both frontend and backend**; these start commands run **both services**. Use the row for the participant's actual shell:
+
+| Platform | Setup and checks | Start |
+|---|---|---|
+| Linux / WSL | `bash scripts/setup.sh` | `bash scripts/dev.sh` |
+| macOS | `bash scripts/macos.sh setup` | `bash scripts/macos.sh dev` |
+| Native Windows PowerShell | `.\scripts\windows.ps1 -Action Setup` | `.\scripts\windows.ps1 -Action Dev` |
+
+Use `docs/setup-guide.md` for missing prerequisites. Stop both services with Ctrl-C. Run these from the repository root; each worktree needs its own dependency installation. The Bash commands below are manual alternatives, not additional required setup steps.
 
 Prerequisites: Node.js 22 LTS with npm; Python 3.11–3.13 with venv/pip; Git. Install before the timed exercise.
 
@@ -25,6 +33,22 @@ npm --prefix frontend test
 npm --prefix frontend run build
 ```
 Open http://127.0.0.1:5173. FastAPI docs: http://127.0.0.1:8000/docs. No external services or API keys are needed. Set `TASKS_DB` to an absolute SQLite path to override the default per-checkout database.
+
+## Workshop exercise: use skills to create a task
+
+The chosen feature is a form with **Title**, **Description**, and **Add task**, plus submission to POST `/api/tasks`. Keep it small: title validation, optional description, pending/error feedback, and the new task appearing in the list. Task creation stays absent in the starter; only implement it when assigned the exercise. The point is to practice skills, delegation, isolation, and evidence, not to redesign the app.
+
+Follow this sequence when the participant asks to do the workshop:
+
+1. **Set up and verify the starter** with the platform commands above. Check skills are discoverable. For live issues/PRs, confirm GitHub access and the participant's target repository/fork; `gh auth status` and `gh repo view --json nameWithOwner` are read-only checks. Local app use does not require GitHub access.
+2. **Clarify with `$grill-me`.** Use plain-language Q/A with recommended choices and custom answers. Discuss what the participant wants people to be able to do; keep routine technical choices with the agents. Use the existing brief and API contract rather than inventing extra features. Confirm shared understanding.
+3. **Create issues with `$create-ticket`.** Draft two linked GitHub issues from `docs/frontend-ticket.md` and `docs/backend-ticket.md`, preserving the shared API contract and disjoint ownership. Publish only to the authorized target and record both URLs. A local draft is a fallback, not a published issue. Creating issues does not authorize starting implementation.
+4. **Implement with `$implement-ticket`.** Give each issue to an agent in its own branch/worktree. Have the participant approve the concrete plans; a delegated agent's main agent may approve within the participant's scope. Approval can cover named milestones upfront to keep the exercise moving. Frontend edits only `frontend/`, backend only `backend/`; both track their issue and run their own checks. The frontend may use `$ui-ux-pro-max` for a focused form/accessibility check within the existing React/CSS style, without a redesign or new dependencies.
+5. **Review and open PRs.** Each implementation runs the skill's independent security and architecture review gates against its proposed diff, fixes blockers, and prepares a PR linking its issue. Push/open one PR per ticket once publication is authorized. A participant's explicit “implement this issue and open a PR; you may push this ticket branch” covers those actions; do not ask again for covered actions. Missing tooling or permissions means a concrete local PR draft and a reported blocker, never a fabricated URL or review pass. Do not merge automatically.
+6. **Verify the combined feature.** The integration owner reviews both PRs and combines the branches in an integration worktree/branch, then runs all checks and verifies form submission, invalid titles, failure/retry, and persistence. Neither PR's isolated tests prove the complete feature works. Follow `docs/workshop-guide.md` for integration. Keep the original starter branch available for future participants.
+7. **Follow up with `$pr-babysitter` if requested.** Monitor the real PR URLs with a verified scheduler/runner; default 15-minute monitoring is a follow-up outside the 20-minute activity. Its triage goes to the participant for consequential decisions. Do not start a monitor just because a PR was opened.
+
+Use the copyable prompts in `docs/agent-prompts.md`. Keep setup/publication authorization separate from milestone approvals and preserve approvals across turns. Merely reading this workflow does not authorize creating issues, coding, pushing, opening PRs, or starting monitors.
 
 ## Ownership and conventions
 - Frontend agent: edit only `frontend/` (including its tests). Read `docs/frontend-ticket.md`.
@@ -53,6 +77,6 @@ Before committing, run the checks for your directory, review `git diff --check` 
 
 Avoid destructive commands (`git reset --hard`, `git clean -fd`, force pushes, deleting worktrees with unfinished work). Never commit secrets, `.env`, dependencies, build outputs, or databases. Do not push without explicit approval. `CLAUDE.md` must remain a symbolic link to this file.
 
-## Optional workflow skills
+## Workflow skills
 
 Repository skills live in `.agents/skills/`; `.claude/skills` links to that directory. See `docs/skills-guide.md`. Use the named workflow when requested; its explicit milestone/review gates apply to that workflow, not ordinary starter edits. `implement-ticket` and significant PR fixes request independent security/architecture reviewers. Skills do not override user authorization, file ownership, or the no-push rule. Task creation remains a participant exercise.

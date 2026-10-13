@@ -75,6 +75,21 @@ GET should return 200 and POST should return **405 Method Not Allowed**. There i
 
 Each worktree needs its own installed dependencies and database. Preinstall them before the timed exercise using the guide's preparation steps. This demo is for local development; Vite's proxy is a development facility, and deployment/authentication are outside the workshop.
 
-## Optional coding skills
+## Coding skills
 
 Five reusable skills are bundled: `grill-me`, `create-ticket`, `implement-ticket`, `pr-babysitter`, and `ui-ux-pro-max`. Read the [skills setup and usage guide](docs/skills-guide.md) for local installation, example prompts, approval gates, and PR monitoring. They do not change the starter app or implement task creation.
+
+## Exercise: create a task using skills
+
+Build one small feature: a **Title + Description form that submits a task and shows it in the list**. The feature is deliberately simple; the exercise is how you use the skills to deliver it.
+
+1. **Prepare:** use the platform setup/start commands above and confirm the starter works. For GitHub issues and PRs, use a repository/fork you can write to and sign in with `gh auth login` if needed.
+2. **Clarify:** use `$grill-me` to agree on the user experience, with plain-language questions and recommendations.
+3. **Create issues:** use `$create-ticket` to publish two linked issues from the existing frontend/backend ticket documents in your chosen repository.
+4. **Implement in parallel:** use `$implement-ticket` in two separate worktrees, one per issue. Approve the plans and milestones, and inspect the agents' test evidence.
+5. **Open PRs:** each agent runs independent security/architecture reviews, addresses blockers, and opens a PR linked to its issue. Explicitly authorize pushing the exercise branches and opening the PRs. Review before merging.
+6. **Integrate and try it:** combine both branches, run all tests/build, and create tasks in the browser. Check validation, errors/retry, and persistence.
+
+Optional skill practice: use `$ui-ux-pro-max` to review the form's usability and `$pr-babysitter` to triage later PR feedback. Setup/hosting configuration and waiting for scheduled monitoring happen outside the timed coding window.
+
+[Copyable prompts](docs/agent-prompts.md) and the [timed workshop guide](docs/workshop-guide.md) walk through the exercise. Installing skills or setting up the app does not implement task creation for you.
