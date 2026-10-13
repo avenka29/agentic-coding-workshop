@@ -2,6 +2,8 @@
 
 ## Facilitator preparation (before the clock starts)
 
+Use the assistant-guided process in [setup-guide.md](setup-guide.md) and the setup prompt in [agent-prompts.md](agent-prompts.md) when a participant lacks dependencies. macOS and native Windows have their own script entry points. Verify readiness before starting the clock; if setup is needed during the activity, allow catch-up time or pair the participant with a ready machine.
+
 Install prerequisites and a participant's preferred coding agent ahead of time. No paid API is required by the application; use an already available coding-agent setup. Run the README's installation, tests, and starter preflight. Confirm each participant can open the app and see seeded tasks. Have the API contract and tickets open.
 
 Create the exercise worktrees and install dependencies in each before the timed session when downloads are slow. In the 3–5 minute segment, explain/inspect these pre-created worktrees instead of downloading packages. For a cold setup, allow extra preparation time; installation is not included in the 20 minutes.
@@ -11,10 +13,12 @@ Create the exercise worktrees and install dependencies in each before the timed 
 git worktree add -b workshop/frontend ../workshop-frontend HEAD
 git worktree add -b workshop/backend ../workshop-backend HEAD
 npm --prefix ../workshop-frontend/frontend install
-python3 -m venv ../workshop-backend/backend/.venv
+python3.13 -m venv ../workshop-backend/backend/.venv
 ../workshop-backend/backend/.venv/bin/python -m pip install -r ../workshop-backend/backend/requirements.txt
 git worktree list
 ```
+
+The worktree commands above use Bash. On native Windows, create the worktrees with the same Git commands and run `scripts/windows.ps1 -Action Setup` in each checkout; it installs both halves and verifies them using native paths. macOS can run `bash scripts/macos.sh setup` in each checkout. Use an existing supported Python 3.11/3.12 if 3.13 is not installed.
 
 The frontend worktree only needs npm dependencies; the backend worktree only needs its virtualenv. The original repository needs both for integration. Worktrees use separate databases by default. Avoid checking out the same branch in multiple worktrees. Default service ports are shared: run services in the original integration checkout and rely on mocks/tests in agent checkouts. A frontend POST may fail until the backend branch is merged; that is expected.
 

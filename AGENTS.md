@@ -3,13 +3,17 @@
 ## Project and architecture
 This is a minimal starter for a 30-minute agentic coding workshop: 10 minutes of concepts and 20 minutes of hands-on work. React + TypeScript + Vite in `frontend/` calls FastAPI in `backend/` through Vite's `/api` proxy. SQLite is local; `backend/app.py` owns the schema and seeds three tasks on first startup. Existing operations are list, toggle completion, and delete. **Task creation is deliberately absent; implement it only when assigned a workshop ticket.**
 
+## Participant setup requests
+
+When asked to set up/run the app or resolve missing dependencies, follow `docs/setup-guide.md` before the exercise. Inspect OS/shell, repository state, runtime versions, environment access, and existing dependencies. Choose Linux/WSL `scripts/setup.sh`, macOS `scripts/macos.sh setup`, or native Windows `scripts/windows.ps1 -Action Setup`; use the matching start command. Host-tool installation is a separate explicit action, using existing authorization and actual tool permissions. Preserve existing environments/data and provide concrete user commands for blocked steps. Verify tests/build, live app/API behavior, and absence of task creation before claiming starter readiness. Report what passed versus what is blocked. These setup requests do not invoke implement-ticket milestone gates or authorize implementing the exercise.
+
 ## Commands (from repository root)
 Convenience commands: `bash scripts/setup.sh` installs dependencies and runs checks; `bash scripts/dev.sh` runs both services and stops them together on Ctrl-C.
 
 Prerequisites: Node.js 22 LTS with npm; Python 3.11–3.13 with venv/pip; Git. Install before the timed exercise.
 
 ```bash
-python3 -m venv backend/.venv
+python3.13 -m venv backend/.venv
 backend/.venv/bin/python -m pip install -r backend/requirements.txt
 npm --prefix frontend install
 (cd backend && .venv/bin/python -m uvicorn app:app --reload --host 127.0.0.1 --port 8000)

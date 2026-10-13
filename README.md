@@ -16,12 +16,18 @@ Setup installs dependencies and runs backend tests, frontend tests, and the buil
 
 An incompatible existing `backend/.venv` is preserved and reported rather than replaced. Move it outside the repository before rerunning setup. Keep each worktree's dependencies separate and stop any previous service using ports 5173/8000 before launching another checkout. Manual commands remain below.
 
+For macOS, use `bash scripts/macos.sh setup` and `bash scripts/macos.sh dev`; `bash scripts/macos.sh install-tools` optionally installs Homebrew prerequisites. For native Windows PowerShell, use `.\scripts\windows.ps1 -Action Setup` and `-Action Dev`; `-Action InstallTools` optionally installs missing runtimes via WinGet. See the [assistant-guided setup process](docs/setup-guide.md) for missing tools, platform details, permissions, troubleshooting, and the readiness check.
+
+Participants can simply ask their assistant:
+
+> Read AGENTS.md and docs/setup-guide.md. Set up this checkout for the workshop using my OS and shell. Diagnose missing prerequisites, install what is authorized, run the checks and both services, and report readiness with evidence. Keep task creation unimplemented. If your environment blocks a step, give me the exact command to run.
+
 ## Install before the workshop
-Requires Git, Node.js 22 LTS/npm, and Python 3.11–3.13 with pip/venv. Internet access is needed only to install dependencies. No Docker, paid APIs, database server, or API keys. Use Bash commands below (Windows users can use WSL).
+Requires Git, Node.js 22 LTS/npm, and Python 3.11–3.13 with pip/venv. Internet access is needed only to install dependencies. No Docker, paid APIs, database server, or API keys. Use the platform scripts below or the manual Bash commands (Windows users can use WSL).
 
 ```bash
 cd agentic-coding-workshop
-python3 -m venv backend/.venv
+python3.13 -m venv backend/.venv
 backend/.venv/bin/python -m pip install -r backend/requirements.txt
 npm --prefix frontend install
 ```

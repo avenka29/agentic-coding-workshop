@@ -5,6 +5,10 @@ project_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$project_dir"
 
 missing=0
+if ! command -v git >/dev/null 2>&1; then
+  echo 'Install Git for the workshop worktrees; see docs/setup-guide.md.' >&2
+  missing=1
+fi
 if ! command -v node >/dev/null 2>&1 || ! command -v npm >/dev/null 2>&1; then
   echo 'Install Node.js 22 LTS (including npm), then rerun this script.' >&2
   missing=1
@@ -27,6 +31,7 @@ if [[ -z "$workshop_python" ]] || ! "$workshop_python" -c 'import sys; sys.exit(
   missing=1
 fi
 if [[ "$missing" -ne 0 ]]; then
+  echo 'Assistant-guided setup process: docs/setup-guide.md' >&2
   exit 1
 fi
 
