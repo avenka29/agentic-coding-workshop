@@ -28,3 +28,13 @@ The npm lockfile could not be generated without npm. Direct frontend dependencie
 5. Complete the hands-on exercise using the guide, then verify 201/422 and creation persistence.
 
 Application scope: local demo only. Installation/download time and configuring a coding agent are preparation activities outside the 30-minute workshop.
+
+## Skills bundle validation
+
+Added the five skills after starter setup. All five passed the skill-creator validator and their UI metadata parsed successfully. Fourteen offline repository tests passed for install/idempotence/conflict preservation, symlink portability, upstream hashes, PR snapshot pagination/versioning, runner arguments/retries, locking, stop conditions, and failure exit codes. The UI UX Pro Max data validator and 68 standalone upstream tests passed (39 core, 26 design-system mode, 3 stack handling). Search and design-system generation also ran successfully offline.
+
+All 74 upstream files were initially verified byte-for-byte against commit `7246805992a42b7bba37d4cac83b01416f0c6c44`; the documented local adaptation changes only SKILL.md's script path guidance. All other upstream files remain hash-identical. `.claude/skills` is a portable relative symlink to `.agents/skills`.
+
+The offline installer successfully copied all five skills to `/home/avenka29/dev/agentic-skills/.agents/skills`; a second install confirmed identical files without overwriting them. User-wide skill directories are outside the permitted writable roots, so global discovery still requires the user's installation command in docs/skills-guide.md. Authenticated live PR polling/agent scheduling and tracker publication were not tested: gh is unavailable in this environment and no target PR was requested. No live monitor was created. These offline checks do not validate LLM behavior, actual UI availability, or every upstream maintenance test.
+
+Whitespace verification passed for locally authored changes. The full staged whitespace check flags existing trailing whitespace in upstream `scripts/design_system.py`; it is intentionally retained to preserve the pinned source hashes.

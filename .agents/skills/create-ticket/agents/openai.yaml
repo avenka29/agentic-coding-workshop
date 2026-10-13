@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create Ticket"
+  short_description: "Draft scoped tickets with clear acceptance criteria"
+  default_prompt: "Use $create-ticket to turn this context into a scoped engineering ticket."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "PR Babysitter"
+  short_description: "Monitor PR feedback, fix bounded issues, escalate choices"
+  default_prompt: "Use $pr-babysitter to monitor this PR every 15 minutes and triage feedback."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI UX Pro Max"
+  short_description: "Search local UI/UX design guidance and generate systems"
+  default_prompt: "Use $ui-ux-pro-max to improve this interface within the existing stack."

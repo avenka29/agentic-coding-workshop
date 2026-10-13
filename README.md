@@ -54,3 +54,7 @@ GET should return 200 and POST should return **405 Method Not Allowed**. There i
 - [Validation record](docs/validation.md): checks performed and setup limitations
 
 Each worktree needs its own installed dependencies and database. Preinstall them before the timed exercise using the guide's preparation steps. This demo is for local development; Vite's proxy is a development facility, and deployment/authentication are outside the workshop.
+
+## Optional coding skills
+
+Five reusable skills are bundled: `grill-me`, `create-ticket`, `implement-ticket`, `pr-babysitter`, and `ui-ux-pro-max`. Read the [skills setup and usage guide](docs/skills-guide.md) for local installation, example prompts, approval gates, and PR monitoring. They do not change the starter app or implement task creation.

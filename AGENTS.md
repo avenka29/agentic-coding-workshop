@@ -46,3 +46,7 @@ Start both branches from the same clean committed starter. Each agent works in i
 Before committing, run the checks for your directory, review `git diff --check` and `git diff`, and confirm `git status` shows only owned files. Backend tests must use temporary databases, never the participant database. Add creation tests in the backend ticket; the starter's absence check is a manual preflight, so no obsolete test needs to be removed. Commit only your ticket's files with a descriptive message. Integration owner merges both branches, runs all tests/build, and verifies creation in the browser plus persistence after restarting the backend.
 
 Avoid destructive commands (`git reset --hard`, `git clean -fd`, force pushes, deleting worktrees with unfinished work). Never commit secrets, `.env`, dependencies, build outputs, or databases. Do not push without explicit approval. `CLAUDE.md` must remain a symbolic link to this file.
+
+## Optional workflow skills
+
+Repository skills live in `.agents/skills/`; `.claude/skills` links to that directory. See `docs/skills-guide.md`. Use the named workflow when requested; its explicit milestone/review gates apply to that workflow, not ordinary starter edits. `implement-ticket` and significant PR fixes request independent security/architecture reviewers. Skills do not override user authorization, file ownership, or the no-push rule. Task creation remains a participant exercise.

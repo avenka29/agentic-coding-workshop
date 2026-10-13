@@ -1,0 +1,4 @@
+interface:
+  display_name: "Implement Ticket"
+  short_description: "Implement issues with milestone approvals and reviews"
+  default_prompt: "Use $implement-ticket to plan and implement this issue in a worktree."
